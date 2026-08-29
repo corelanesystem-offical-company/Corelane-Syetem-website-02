@@ -17,3 +17,6 @@
 
 [context.production.environment]
   NODE_ENV = "production"
+  # Force npm to install devDependencies even when NODE_ENV=production,
+  # otherwise the build toolchain (typescript, vite, etc.) is skipped.
+  NPM_FLAGS = "--include=dev"
