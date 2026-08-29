@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Prevent crawling of utility/catch-all routes that return thin content
+Disallow: /svg
+Disallow: /404
+Disallow: /thank-you
+
+# Prevent crawling of internal SPA routing artifacts
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Sitemap
+Sitemap: https://corelanesystem.com/sitemap.xml

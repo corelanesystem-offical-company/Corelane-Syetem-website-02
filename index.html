@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0D1B2A" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Default title/meta — overridden per-route by react-helmet-async -->
+    <title>Corelane Systems — Software Development & Cloud Engineering</title>
+    <meta
+      name="description"
+      content="Corelane Systems builds professional websites, web applications, custom software, and cloud infrastructure for startups, SMEs, and growing businesses in Pakistan and internationally."
+    />
+    <link rel="canonical" href="https://corelanesystem.com/" />
+
+    <!-- Base Open Graph -->
+    <meta property="og:site_name" content="Corelane Systems" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Organization JSON-LD (static for crawlers that don't execute JS) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Corelane Systems",
+      "url": "https://corelanesystem.com",
+      "logo": "https://corelanesystem.com/logo.png",
+      "description": "Software Development, Cloud Engineering, and digital solutions for businesses in Pakistan and internationally.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "corelanesystem@gmail.com"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Corelane Systems",
+      "url": "https://corelanesystem.com"
+    }
+    </script>
+  </head>
+  <body>
+    <!-- A little help for the Netlify post-processing bots -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="fullName" />
+      <input type="text" name="companyName" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="country" />
+      <input type="text" name="website" />
+      <input type="text" name="service" />
+      <input type="text" name="projectType" />
+      <input type="text" name="budget" />
+      <input type="text" name="timeline" />
+      <textarea name="message"></textarea>
+    </form>
+    
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

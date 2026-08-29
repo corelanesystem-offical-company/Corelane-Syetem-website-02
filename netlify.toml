@@ -1,0 +1,19 @@
+[build]
+  command   = "npm run build"
+  publish   = "dist"
+
+# Canonical domain: redirect www to non-www
+[[redirects]]
+  from   = "https://www.corelanesystem.com/*"
+  to     = "https://corelanesystem.com/:splat"
+  status = 301
+  force  = true
+
+# SPA fallback — must be last
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+[context.production.environment]
+  NODE_ENV = "production"
