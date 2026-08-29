@@ -129,12 +129,16 @@ export default function Contact() {
     // Construct the payload for Netlify Forms
     const form = e.target as HTMLFormElement
     const formDataObj = new FormData(form)
+    
+    // Explicitly add form-name just in case hidden input is missed
+    const urlParams = new URLSearchParams(formDataObj as any)
+    urlParams.set('form-name', 'contact')
 
     try {
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formDataObj as any).toString()
+        body: urlParams.toString()
       })
 
       if (response.ok) {
