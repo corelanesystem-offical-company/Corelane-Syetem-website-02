@@ -25,12 +25,31 @@ export default function About() {
         </div>
       </section>
 
-      <section className="section-padding bg-white">
-        <div className="container-content max-w-4xl">
-          <SectionHeader title="Our Mission" align="left" />
-          <p className="text-xl text-slate-600 leading-relaxed">
-            We exist to help businesses of every size compete through technology. We solve real business problems with thoughtfully designed, well-engineered software — delivered with professionalism and clarity.
-          </p>
+      <section className="section-padding bg-white overflow-hidden">
+        <div className="container-content">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="max-w-2xl">
+              <SectionHeader title="Our Mission" align="left" className="mb-8 md:mb-8" />
+              <p className="text-xl text-slate-600 leading-relaxed">
+                We exist to help businesses of every size compete through technology. We solve real business problems with thoughtfully designed, well-engineered software — delivered with professionalism and clarity.
+              </p>
+            </div>
+            <div className="relative">
+              {/* Decorative elements */}
+              <div className="absolute -top-8 -right-8 w-64 h-64 bg-teal/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-navy/5 rounded-full blur-3xl pointer-events-none" />
+              
+              <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" 
+                  alt="Team collaborating on technology" 
+                  className="w-full h-[400px] object-cover"
+                />
+                {/* Subtle gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent mix-blend-multiply" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

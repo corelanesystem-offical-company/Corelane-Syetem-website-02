@@ -180,12 +180,13 @@ export default function Contact() {
         canonical="/contact"
       />
 
-      <section className="bg-navy pt-28 pb-16 md:pt-40 md:pb-24 border-b border-navy-800">
-        <div className="container-content text-center max-w-3xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+      <section className="bg-white pt-28 pb-16 md:pt-40 md:pb-24 border-b border-slate-200 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-slate-pattern opacity-50"></div>
+        <div className="container-content text-center max-w-3xl relative z-10">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
             Let's Build Something That Matters.
           </h1>
-          <p className="text-lg md:text-xl text-slate-400">
+          <p className="text-lg md:text-xl text-slate-600">
             Tell us about your business, project, or technology challenge. We'll review your requirements and get back to you.
           </p>
         </div>
@@ -267,7 +268,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+1 (555) 000-0000"
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-teal focus:outline-none focus:ring-2 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-slate-50 focus:bg-white text-slate-900 focus:border-teal focus:outline-none focus:ring-4 focus:ring-teal-100 placeholder:text-slate-400 transition-colors"
                     />
                   </div>
                 </div>
@@ -282,7 +283,7 @@ export default function Contact() {
                       value={formData.country}
                       onChange={handleChange}
                       placeholder="United States"
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-teal focus:outline-none focus:ring-2 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-slate-50 focus:bg-white text-slate-900 focus:border-teal focus:outline-none focus:ring-4 focus:ring-teal-100 placeholder:text-slate-400 transition-colors"
                     />
                   </div>
                   <div>
@@ -294,7 +295,7 @@ export default function Contact() {
                       value={formData.website}
                       onChange={handleChange}
                       placeholder="https://acmecorp.com"
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-teal focus:outline-none focus:ring-2 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-slate-50 focus:bg-white text-slate-900 focus:border-teal focus:outline-none focus:ring-4 focus:ring-teal-100 placeholder:text-slate-400 transition-colors"
                     />
                   </div>
                 </div>
@@ -342,7 +343,7 @@ export default function Contact() {
                         name="budget"
                         value={formData.budget}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-teal focus:outline-none focus:ring-2 focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white bg-slate-50 focus:bg-white text-slate-900 focus:border-teal focus:outline-none focus:ring-4 focus:ring-teal-100 placeholder:text-slate-400 transition-colors"
                       >
                         <option value="">Select estimated budget...</option>
                         {BUDGETS.map(s => <option key={s} value={s}>{s}</option>)}
@@ -355,7 +356,7 @@ export default function Contact() {
                         name="timeline"
                         value={formData.timeline}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-teal focus:outline-none focus:ring-2 focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white bg-slate-50 focus:bg-white text-slate-900 focus:border-teal focus:outline-none focus:ring-4 focus:ring-teal-100 placeholder:text-slate-400 transition-colors"
                       >
                         <option value="">Select expected timeline...</option>
                         {TIMELINES.map(s => <option key={s} value={s}>{s}</option>)}

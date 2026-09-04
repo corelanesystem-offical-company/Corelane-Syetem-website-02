@@ -8,22 +8,28 @@ export default {
     extend: {
       colors: {
         navy: {
-          DEFAULT: '#0F1115', // Sophisticated deep charcoal
-          800: '#16191D',
-          700: '#20242A',
-          600: '#2D333B',
+          DEFAULT: '#0F172A', // Slate 900
+          900: '#020617', // Slate 950
+          800: '#0F172A',
+          700: '#1E293B', // Slate 800
+          600: '#334155',
         },
         teal: {
-          DEFAULT: '#0F766E', // Enterprise Teal
-          dark: '#115E59',
-          light: '#14B8A6',
+          DEFAULT: '#0F766E', // Primary
+          dark: '#115E59',    // Primary Dark
+          accent: '#14B8A6',  // Accent
+          light: '#CCFBF1',   // Primary Light
           50: '#F0FDFA',
           100: '#CCFBF1',
+          500: '#14B8A6',
+          700: '#0F766E',
+          800: '#115E59',
         },
         slate: {
           50: '#F8FAFC',
           100: '#F1F5F9',
           200: '#E2E8F0',
+          300: '#CBD5E1',
           400: '#94A3B8',
           500: '#64748B',
           600: '#475569',
@@ -75,7 +81,7 @@ export default {
         'glow-lg': '0 0 30px rgba(15, 118, 110, 0.4)',
       },
       backgroundImage: {
-        'grid-slate': 'linear-gradient(to right, #f1f5f9 1px, transparent 1px), linear-gradient(to bottom, #f1f5f9 1px, transparent 1px)',
+        'grid-slate': 'linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)',
         'grid-navy': 'linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)',
       },
     },

@@ -22,6 +22,14 @@ const industryLinks = [
   { label: 'SMEs', href: '/industries/smes' },
 ]
 
+const locationLinks = [
+  { label: '🇵🇰 Pakistan', href: '/locations/pakistan' },
+  { label: '🇦🇪 UAE', href: '/locations/uae' },
+  { label: '🇬🇧 United Kingdom', href: '/locations/uk' },
+  { label: '🇺🇸 United States', href: '/locations/usa' },
+  { label: '🇨🇦 Canada', href: '/locations/canada' },
+]
+
 interface DropdownMenuProps {
   label: string
   items: { label: string; href: string }[]
@@ -45,7 +53,7 @@ function DropdownMenu({ label, items, overviewHref, overviewLabel, cols = 1 }: D
     >
       <button
         className={cn(
-          'flex items-center gap-1 px-3 py-2 text-sm font-medium text-slate-700',
+          'flex items-center gap-1 px-3 py-2 text-sm font-medium text-slate-600',
           'hover:text-teal transition-colors duration-200 rounded-md',
           open && 'text-teal'
         )}
@@ -62,11 +70,11 @@ function DropdownMenu({ label, items, overviewHref, overviewLabel, cols = 1 }: D
       {open && (
         <div
           className={cn(
-            'absolute top-full left-0 pt-4 z-50',
+            'absolute top-full left-0 pt-2 z-50',
             cols === 2 ? 'w-96' : 'w-56'
           )}
         >
-          <div className="bg-white rounded-xl border border-slate-200 shadow-card-hover p-3 animate-fade-up">
+          <div className="bg-white rounded-xl border border-slate-200 shadow-card-hover p-3">
             {overviewHref && (
               <Link
                 to={overviewHref}
@@ -96,36 +104,6 @@ function DropdownMenu({ label, items, overviewHref, overviewLabel, cols = 1 }: D
   )
 }
 
-function NavItem({ to, label }: { to: string, label: string }) {
-  return (
-    <NavLink
-      to={to}
-      className={({ isActive }) =>
-        cn(
-          'px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200',
-          isActive ? 'text-teal' : 'text-slate-700 hover:text-teal'
-        )
-      }
-    >
-      {label}
-    </NavLink>
-  )
-}
-
-function MobileLink({ to, label, highlight }: { to: string; label: string; highlight?: boolean }) {
-  return (
-    <Link
-      to={to}
-      className={cn(
-        'block px-4 py-3 text-sm font-medium rounded-lg transition-colors',
-        highlight ? 'bg-teal-50 text-teal' : 'text-slate-700 hover:bg-slate-50 hover:text-teal'
-      )}
-    >
-      {label}
-    </Link>
-  )
-}
-
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -145,20 +123,20 @@ export default function Navbar() {
       className={cn(
         'fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b',
         scrolled
-          ? 'bg-white/95 backdrop-blur-md border-slate-200 py-3 shadow-sm'
-          : 'bg-white/95 backdrop-blur-md border-slate-200 py-5'
+          ? 'bg-navy/95 backdrop-blur-lg border-navy-800 py-3 shadow-md'
+          : 'bg-navy border-transparent py-5'
       )}
     >
       <div className="container-content">
         <div className="flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 flex-shrink-0 group" aria-label="Corelane Systems home">
+          <Link to="/" className="flex items-center gap-2.5 flex-shrink-0" aria-label="Corelane Systems home">
             <img
               src="/logo.png"
               alt="Corelane Systems"
-              className="h-8 w-auto transform group-hover:scale-105 transition-transform"
+              className="h-8 w-auto"
             />
-            <span className="text-slate-900 font-semibold text-sm hidden sm:block leading-tight">
+            <span className="text-white font-semibold text-sm hidden sm:block leading-tight">
               Corelane<br />
               <span className="text-teal text-xs tracking-widest uppercase font-medium">Systems</span>
             </span>
@@ -173,16 +151,51 @@ export default function Navbar() {
               overviewLabel="All Services"
               cols={2}
             />
-            <NavItem to="/process" label="Solutions" />
             <DropdownMenu
               label="Industries"
               items={industryLinks}
               overviewHref="/industries"
               overviewLabel="All Industries"
             />
-            <NavItem to="/case-studies" label="Projects" />
-            <NavItem to="/about" label="About" />
-            <NavItem to="/contact" label="Contact" />
+            <NavLink
+              to="/process"
+              className={({ isActive }) =>
+                cn(
+                  'px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200',
+                  isActive ? 'text-teal' : 'text-slate-300 hover:text-white'
+                )
+              }
+            >
+              Solutions
+            </NavLink>
+            <DropdownMenu
+              label="Locations"
+              items={locationLinks}
+              overviewHref="/locations"
+              overviewLabel="All Locations"
+            />
+            <NavLink
+              to="/blog"
+              className={({ isActive }) =>
+                cn(
+                  'px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200',
+                  isActive ? 'text-teal' : 'text-slate-300 hover:text-white'
+                )
+              }
+            >
+              Insights
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                cn(
+                  'px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200',
+                  isActive ? 'text-teal' : 'text-slate-300 hover:text-white'
+                )
+              }
+            >
+              About
+            </NavLink>
           </nav>
 
           {/* Desktop CTA */}
@@ -192,13 +205,13 @@ export default function Navbar() {
               target="_blank" 
               rel="noopener noreferrer"
               onClick={() => trackEvent('cta_whatsapp', { source: 'navbar' })}
-              className="flex items-center gap-2 text-slate-700 hover:text-teal transition-colors text-sm font-medium"
+              className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors text-sm font-medium"
             >
               <MessageCircle size={18} />
               <span className="hidden xl:inline">WhatsApp Us</span>
             </a>
             <Link to="/contact" onClick={() => trackEvent('cta_start_project', { source: 'navbar' })}>
-              <Button size="md" variant="primary">
+              <Button size="md" className="shadow-sm">
                 Start a Project
               </Button>
             </Link>
@@ -207,7 +220,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-slate-700 hover:text-teal transition-colors duration-200 rounded-md"
+            className="lg:hidden p-2 text-slate-300 hover:text-white transition-colors duration-200 rounded-md"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
           >
@@ -218,40 +231,86 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-slate-200 bg-white shadow-xl">
-          <div className="container-content py-4 space-y-4 max-h-[80vh] overflow-y-auto">
-            <div>
-              <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 px-4">Menu</div>
-              <MobileLink to="/services" label="Services" highlight />
-              <MobileLink to="/process" label="Solutions" />
-              <MobileLink to="/industries" label="Industries" />
-              <MobileLink to="/case-studies" label="Projects" />
+        <div className="lg:hidden border-t border-navy-700 bg-navy">
+          <div className="container-content py-4 space-y-1 max-h-[80vh] overflow-y-auto">
+            <MobileNavSection title="Company">
               <MobileLink to="/about" label="About" />
-              <MobileLink to="/contact" label="Contact" />
-            </div>
+              <MobileLink to="/process" label="Our Process" />
+              <MobileLink to="/case-studies" label="Work & Case Studies" />
+              <MobileLink to="/blog" label="Blog" />
+            </MobileNavSection>
 
-            <div className="pt-4 border-t border-slate-200 px-4">
-              <Link to="/contact" className="block w-full mb-3" onClick={() => trackEvent('cta_start_project', { source: 'mobile_nav' })}>
-                <Button size="lg" className="w-full justify-center">
-                  Start a Project
-                </Button>
+            <MobileNavSection title="Services">
+              <MobileLink to="/services" label="All Services" highlight />
+              {serviceLinks.map((s) => (
+                <MobileLink key={s.href} to={s.href} label={s.label} />
+              ))}
+            </MobileNavSection>
+
+            <MobileNavSection title="Industries">
+              <MobileLink to="/industries" label="All Industries" highlight />
+              {industryLinks.map((i) => (
+                <MobileLink key={i.href} to={i.href} label={i.label} />
+              ))}
+            </MobileNavSection>
+
+            <MobileNavSection title="Locations">
+              {locationLinks.map((l) => (
+                <MobileLink key={l.href} to={l.href} label={l.label} />
+              ))}
+            </MobileNavSection>
+
+            <div className="pt-4 pb-2 flex flex-col gap-3">
+              <Link
+                to="/contact"
+                className="w-full flex items-center justify-center py-3 bg-teal text-white font-medium rounded-lg hover:bg-teal-dark transition-colors"
+              >
+                Start a Project
               </Link>
-              <a 
+              <a
                 href={CONTACT.whatsappUrl}
                 target="_blank"
-                rel="noopener noreferrer" 
-                onClick={() => trackEvent('cta_whatsapp', { source: 'mobile_nav' })}
-                className="w-full"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center py-3 bg-[#25D366] text-white font-medium rounded-lg hover:bg-[#20ba59] transition-colors"
               >
-                <Button size="lg" variant="secondary" className="w-full justify-center">
-                  <MessageCircle size={18} />
-                  WhatsApp Us
-                </Button>
+                WhatsApp Us
               </a>
             </div>
           </div>
         </div>
       )}
     </header>
+  )
+}
+
+function MobileNavSection({ title, children }: { title: string; children: React.ReactNode }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div>
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center justify-between w-full px-3 py-2.5 text-xs font-semibold uppercase tracking-widest text-slate-400"
+      >
+        {title}
+        <ChevronDown size={14} className={cn('transition-transform duration-200', open && 'rotate-180')} />
+      </button>
+      {open && <div className="pl-2 pb-2 space-y-0.5">{children}</div>}
+    </div>
+  )
+}
+
+function MobileLink({ to, label, highlight = false }: { to: string; label: string; highlight?: boolean }) {
+  return (
+    <Link
+      to={to}
+      className={cn(
+        'block px-3 py-2.5 text-sm rounded-lg transition-colors duration-150',
+        highlight
+          ? 'text-teal font-semibold hover:bg-navy-800'
+          : 'text-slate-300 hover:text-white hover:bg-navy-800'
+      )}
+    >
+      {label}
+    </Link>
   )
 }
