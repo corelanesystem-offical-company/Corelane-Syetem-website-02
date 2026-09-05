@@ -6,6 +6,7 @@ export type AnalyticsEvent =
   | 'contact_form_submit'
   | 'contact_form_error'
   | 'service_cta_click'
+  | 'solution_cta_click'
   | 'industry_cta_click'
   | 'solution_cta_click'
   | 'location_cta_click'
