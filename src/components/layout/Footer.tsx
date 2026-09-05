@@ -60,14 +60,13 @@ export default function Footer() {
         {/* FOOTER COLUMNS */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
 
-          {/* Column 1: Brand */}
           <div className="lg:pr-8">
-            <Link to="/" className="flex items-center gap-2.5 mb-6 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-sm w-fit" aria-label="Corelane Systems home">
-              <img src="/logo.png" alt="Corelane Systems" className="h-8 w-auto transform group-hover:scale-105 transition-transform" />
-              <div>
-                <div className="text-text-inverse font-bold text-sm leading-tight">Corelane</div>
-                <div className="text-brand-light text-[10px] tracking-widest uppercase font-semibold">Systems</div>
-              </div>
+            <Link to="/" className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-sm w-fit mb-6" aria-label="Corelane Systems home">
+              <img
+                src="/logo.png"
+                alt="Corelane Systems"
+                className="h-24 md:h-32 w-auto transform group-hover:scale-105 transition-transform object-contain brightness-0 invert"
+              />
             </Link>
             <p className="text-text-muted text-sm leading-relaxed mb-6">
               Technology solutions built around your business. We engineer software that solves problems and drives growth.

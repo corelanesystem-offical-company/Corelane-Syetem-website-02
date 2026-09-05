@@ -30,6 +30,12 @@ const BusinessAutomationSolution = lazy(() => import('@/pages/solutions/Business
 const CloudSolutions = lazy(() => import('@/pages/solutions/CloudSolutions'))
 const DataSolutions = lazy(() => import('@/pages/solutions/DataSolutions'))
 
+// Case Study pages
+const RealEstateCrmPortal = lazy(() => import('@/pages/case-studies/RealEstateCrmPortal'))
+const ProfessionalServicesPlatform = lazy(() => import('@/pages/case-studies/ProfessionalServicesPlatform'))
+const SaasCloudMigration = lazy(() => import('@/pages/case-studies/SaasCloudMigration'))
+const EnterpriseDataPipeline = lazy(() => import('@/pages/case-studies/EnterpriseDataPipeline'))
+
 // Service pages
 const WebDevelopment = lazy(() => import('@/pages/services/WebDevelopment'))
 const WebAppDevelopment = lazy(() => import('@/pages/services/WebAppDevelopment'))
@@ -69,7 +75,16 @@ export default function AppRouter() {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="process" element={<Process />} />
-            <Route path="case-studies" element={<CaseStudies />} />
+            
+            {/* Case Studies */}
+            <Route path="case-studies">
+              <Route index element={<CaseStudies />} />
+              <Route path="real-estate-crm-portal" element={<RealEstateCrmPortal />} />
+              <Route path="professional-services-operations-platform" element={<ProfessionalServicesPlatform />} />
+              <Route path="saas-cloud-infrastructure-migration" element={<SaasCloudMigration />} />
+              <Route path="enterprise-data-pipeline" element={<EnterpriseDataPipeline />} />
+            </Route>
+
             <Route path="blog" element={<Blog />} />
             <Route path="contact" element={<Contact />} />
             <Route path="thank-you" element={<ThankYou />} />
@@ -86,6 +101,13 @@ export default function AppRouter() {
             <Route path="services/data-engineering" element={<DataEngineering />} />
             <Route path="services/data-analytics" element={<DataAnalytics />} />
             <Route path="services/business-automation" element={<BusinessAutomation />} />
+
+            {/* Solutions */}
+            <Route path="solutions" element={<Solutions />} />
+            <Route path="solutions/custom-business-systems" element={<CustomBusinessSystems />} />
+            <Route path="solutions/business-automation" element={<BusinessAutomationSolution />} />
+            <Route path="solutions/cloud-solutions" element={<CloudSolutions />} />
+            <Route path="solutions/data-solutions" element={<DataSolutions />} />
 
             {/* Industries */}
             <Route path="industries" element={<Industries />} />

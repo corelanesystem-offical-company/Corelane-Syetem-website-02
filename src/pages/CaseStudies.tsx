@@ -1,140 +1,131 @@
-import SEO from '@/components/seo/SEO'
+import { Helmet } from 'react-helmet-async'
+import { Link } from 'react-router-dom'
+import { ArrowRight, Terminal, Server, Code2, Database } from 'lucide-react'
+import { Container, Section } from '@/components/ui/LayoutPrimitives'
 import SectionHeader from '@/components/ui/SectionHeader'
-import Breadcrumb from '@/components/ui/Breadcrumb'
+import { caseStudies } from '@/data/caseStudies'
 import CTASection from '@/components/sections/CTASection'
-import { Folder } from 'lucide-react'
-
-// Placeholder case study cards
-const caseStudies = [
-  {
-    id: 'cs-1',
-    title: 'Digital Transformation for a Regional Real Estate Agency',
-    industry: 'Real Estate',
-    service: 'Web Development & CRM Integration',
-    summary:
-      'Replaced an outdated property portal with a modern, lead-optimised website integrated with CRM and automated lead nurturing workflows.',
-    outcome: 'More efficient lead management',
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    id: 'cs-2',
-    title: 'Custom Operations Management System for a Professional Services Firm',
-    industry: 'Professional Services',
-    service: 'Custom Software Development',
-    summary:
-      'Built a bespoke operations and client management platform to replace a complex web of spreadsheets and disconnected tools.',
-    outcome: 'Significant reduction in manual administrative work',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    id: 'cs-3',
-    title: 'Cloud Infrastructure Migration for a Growing SaaS Business',
-    industry: 'Technology',
-    service: 'Cloud Engineering & DevOps',
-    summary:
-      'Migrated a legacy infrastructure to AWS, implemented auto-scaling, and established a CI/CD pipeline for continuous, safe deployments.',
-    outcome: 'Improved uptime and faster deployment cycles',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    id: 'cs-4',
-    title: 'Enterprise Customer Relationship Management (CRM) System',
-    industry: 'Sales & Professional Services',
-    service: 'Custom Software Development',
-    summary:
-      'Developed a scalable CRM platform tailored for complex B2B sales pipelines, featuring automated lead tracking, reporting dashboards, and third-party API integrations.',
-    outcome: 'Streamlined lead tracking and increased sales conversions',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    id: 'cs-5',
-    title: 'Comprehensive Human Resource Management (HRM) System',
-    industry: 'Corporate & Enterprise',
-    service: 'Web Application Development',
-    summary:
-      'Built an all-in-one HR portal to manage employee onboarding, payroll processing, performance evaluations, and leave tracking securely.',
-    outcome: 'Automated core HR workflows and reduced administrative overhead',
-    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    id: 'cs-6',
-    title: 'Scalable Learning Management System (LMS)',
-    industry: 'Education & Corporate Training',
-    service: 'Web Application Development',
-    summary:
-      'Engineered a high-performance e-learning platform with interactive course modules, progress tracking, secure assessments, and real-time analytics.',
-    outcome: 'Enhanced user engagement and seamless training delivery',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80',
-  },
-]
+import Badge from '@/components/ui/Badge'
+import { trackEvent } from '@/utils/analytics'
+import Button from '@/components/ui/Button'
 
 export default function CaseStudies() {
   return (
     <>
-      <SEO
-        title="Case Studies | Corelane Systems"
-        description="How Corelane Systems has helped businesses solve technology challenges. Real projects, real outcomes."
-        canonical="/case-studies"
-      />
+      <Helmet>
+        <title>Engineering Case Studies | Corelane Systems</title>
+        <meta name="description" content="Explore Corelane Systems' technical portfolio, demonstrating our capabilities in custom software, cloud architecture, and data engineering." />
+        <link rel="canonical" href="https://corelanesystems.com/case-studies" />
+      </Helmet>
 
-      <section className="bg-navy pt-8 pb-16 md:pt-12 md:pb-24">
-        <div className="container-content">
-          <Breadcrumb items={[{ label: 'Case Studies' }]} light className="mb-8" />
-          <h1 className="text-h1 font-bold text-white text-balance mb-6">Our Work</h1>
-          <p className="text-xl text-slate-300 max-w-3xl leading-relaxed">
-            Projects we've delivered. Problems we've solved.
+      {/* Hero */}
+      <Section variant="dark" className="pt-24 pb-16 md:pt-32 md:pb-24 border-b border-border-dark bg-surface-dark relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:32px_32px]" />
+        
+        <Container className="relative z-10 text-center max-w-4xl mx-auto">
+          <p className="text-brand-accent font-semibold tracking-widest uppercase text-sm mb-4 animate-fade-up">
+            Engineering Proof
           </p>
-        </div>
-      </section>
+          <h1 className="text-display font-bold text-text-inverse mb-6 text-balance animate-fade-up" style={{ animationDelay: '100ms' }}>
+            Technical implementations & architectural case studies.
+          </h1>
+          <p className="text-lg text-text-muted mb-8 leading-relaxed max-w-2xl mx-auto animate-fade-up" style={{ animationDelay: '200ms' }}>
+            We demonstrate our capabilities through actual engineering projects, proof-of-concepts, and architectural deployments.
+          </p>
+        </Container>
+      </Section>
 
-      <section className="section-padding bg-slate-50">
-        <div className="container-content">
-          <div className="bg-blue-50 border border-blue-100 text-blue-800 p-4 rounded-xl mb-10 text-center text-sm font-medium">
-            Case studies will be updated with detailed project documentation as we make content available.
+      {/* Engineering Capabilities Map */}
+      <Section variant="alt" className="border-b border-border py-12">
+        <Container>
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 opacity-70">
+            <div className="flex items-center gap-2 font-mono text-sm text-text-secondary"><Code2 size={16}/> Application Engineering</div>
+            <div className="flex items-center gap-2 font-mono text-sm text-text-secondary"><Server size={16}/> Cloud Infrastructure</div>
+            <div className="flex items-center gap-2 font-mono text-sm text-text-secondary"><Terminal size={16}/> DevOps / CI-CD</div>
+            <div className="flex items-center gap-2 font-mono text-sm text-text-secondary"><Database size={16}/> Data Pipelines</div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        </Container>
+      </Section>
+
+      {/* Projects Grid */}
+      <Section variant="default">
+        <Container>
+          <div className="bg-surface-alt border border-border text-text-secondary p-4 rounded-xl mb-12 text-center text-sm font-medium max-w-3xl mx-auto">
+            These technical case studies represent internal engineering, proof-of-concepts, and portfolio projects demonstrating our architectural standards.
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {caseStudies.map((cs) => (
               <div
-                key={cs.id}
-                className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-teal/50 hover:shadow-xl hover:shadow-teal/5 transition-all duration-500 hover:-translate-y-1 flex flex-col"
+                key={cs.slug}
+                className="group bg-surface rounded-2xl overflow-hidden border border-border hover:border-brand/50 hover:shadow-card transition-all duration-300 flex flex-col"
               >
-                <div className="relative h-48 overflow-hidden bg-slate-100">
-                  <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
-                  <img src={cs.image} alt={cs.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
-                    <Folder size={14} className="text-teal" />
-                    <span className="text-[10px] font-bold text-slate-700 uppercase tracking-wider">
-                      {cs.industry}
-                    </span>
+                {/* Abstract Visual Header */}
+                <div className="relative h-48 bg-surface-alt flex items-center justify-center border-b border-border overflow-hidden">
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand to-transparent" />
+                  
+                  {/* Decorative nodes */}
+                  <div className="flex items-center gap-4 relative z-10 opacity-70 group-hover:opacity-100 transition-opacity">
+                    <div className="w-12 h-12 bg-surface border border-border rounded-xl flex items-center justify-center shadow-sm">
+                      <Code2 className="text-text-muted group-hover:text-brand transition-colors" />
+                    </div>
+                    <div className="h-px w-12 bg-border relative overflow-hidden">
+                      <div className="absolute inset-0 bg-brand -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+                    </div>
+                    <div className="w-12 h-12 bg-surface border border-border rounded-xl flex items-center justify-center shadow-sm">
+                      <Database className="text-text-muted group-hover:text-brand transition-colors" />
+                    </div>
+                  </div>
+
+                  <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
+                    <Badge variant="dark" className="text-[10px] tracking-wider uppercase font-bold bg-surface-dark/90 backdrop-blur-sm border-border-dark">
+                      {cs.projectType}
+                    </Badge>
                   </div>
                 </div>
                 
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-teal transition-colors">
+                {/* Content */}
+                <div className="p-8 flex-1 flex flex-col">
+                  <div className="text-[10px] font-bold text-brand uppercase tracking-wider mb-2">
+                    {cs.industry}
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-text-primary mb-3 leading-snug group-hover:text-brand transition-colors">
                     {cs.title}
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed mb-6 flex-1">
-                    {cs.summary}
+                  
+                  <p className="text-sm text-text-secondary leading-relaxed mb-6 flex-1">
+                    {cs.shortDescription}
                   </p>
                   
-                  <div className="pt-4 border-t border-slate-100 space-y-3">
-                    <div className="flex flex-col gap-1">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Service</span>
-                      <span className="text-sm font-medium text-slate-700">{cs.service}</span>
+                  <div className="pt-6 border-t border-border flex items-center justify-between mt-auto">
+                    <div className="flex flex-wrap gap-2 max-w-[60%]">
+                      {cs.capabilities.slice(0, 2).map((cap, i) => (
+                        <span key={i} className="text-[10px] bg-surface-alt px-2 py-1 rounded text-text-secondary font-medium">
+                          {cap}
+                        </span>
+                      ))}
                     </div>
-                    <div className="flex flex-col gap-1">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Outcome</span>
-                      <span className="text-sm font-bold text-teal">{cs.outcome}</span>
-                    </div>
+                    <Link 
+                      to={`/case-studies/${cs.slug}`}
+                      onClick={() => trackEvent('blog_cta_click', { project: cs.slug })} // Reusing analytics appropriately
+                      className="text-sm font-bold text-brand flex items-center gap-1 group/link"
+                    >
+                      View Case Study
+                      <ArrowRight size={16} className="transition-transform group-hover/link:translate-x-1" />
+                    </Link>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <CTASection title="Have a project in mind?" />
+      <CTASection 
+        title="Have an engineering project in mind?" 
+        subtitle="Let's discuss how our technical capabilities apply to your operational requirements."
+      />
     </>
   )
 }

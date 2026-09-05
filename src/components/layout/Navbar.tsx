@@ -139,6 +139,26 @@ function MobileLink({ to, label, onClick }: { to: string; label: string; onClick
   )
 }
 
+function MobileDropdown({ title, children }: { title: string; children: React.ReactNode }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="py-1">
+      <button 
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between px-4 py-3 text-base font-semibold rounded-lg text-text-primary hover:bg-surface-alt hover:text-brand transition-colors"
+      >
+        <span>{title}</span>
+        <ChevronDown size={18} className={cn("transition-transform duration-200", open && "rotate-180")} />
+      </button>
+      {open && (
+        <div className="pl-4 mt-1 border-l-2 border-border ml-6 space-y-1 animate-fade-in">
+          {children}
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -179,27 +199,23 @@ export default function Navbar() {
     <header
       className={cn(
         'fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-surface',
-        scrolled ? 'border-b border-border shadow-sm py-3' : 'border-b border-transparent py-5'
+        scrolled ? 'border-b border-border shadow-sm py-2' : 'border-b border-transparent py-4'
       )}
     >
       <div className="container-content">
-        <div className="flex items-center justify-between h-12 md:h-14">
+        <div className="flex items-center justify-between h-20 md:h-24">
           
           {/* LEFT: Logo */}
           <Link 
             to="/" 
-            className="flex items-center gap-2.5 flex-shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md p-1 -ml-1" 
+            className="flex items-center flex-shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md p-1 -ml-1" 
             aria-label="Corelane Systems home"
           >
             <img
               src="/logo.png"
               alt="Corelane Systems"
-              className="h-8 w-auto transform group-hover:scale-105 transition-transform"
+              className="h-16 md:h-20 w-auto transform group-hover:scale-105 transition-transform object-contain"
             />
-            <span className="text-text-primary font-bold text-sm hidden sm:block leading-tight">
-              Corelane<br />
-              <span className="text-brand text-xs tracking-widest uppercase font-semibold">Systems</span>
-            </span>
           </Link>
 
           {/* CENTER: Primary Desktop Nav */}
@@ -211,7 +227,7 @@ export default function Navbar() {
               overviewHref="/services"
               overviewLabel="All Services"
             />
-            <DesktopNavLink to="/process" label="Solutions" />
+            <DesktopNavLink to="/solutions" label="Solutions" />
             <DropdownMenu
               label="Industries"
               items={industries.map(i => ({ label: i.title, href: `/industries/${i.slug}` }))}
@@ -262,16 +278,31 @@ export default function Navbar() {
       {/* Mobile Menu Drawer */}
       {mobileOpen && (
         <div 
-          className="lg:hidden fixed inset-0 top-[73px] bg-surface z-40 overflow-y-auto animate-fade-in"
+          className="lg:hidden fixed left-0 w-full bottom-0 bg-surface z-40 overflow-y-auto animate-fade-in border-t border-border"
+          style={{ top: scrolled ? '96px' : '112px' }}
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
         >
           <div className="container-content py-6 space-y-2">
             <MobileLink to="/" label="Home" onClick={() => setMobileOpen(false)} />
-            <MobileLink to="/services" label="Services" onClick={() => setMobileOpen(false)} />
-            <MobileLink to="/process" label="Solutions" onClick={() => setMobileOpen(false)} />
-            <MobileLink to="/industries" label="Industries" onClick={() => setMobileOpen(false)} />
+            
+            <MobileDropdown title="Services">
+              {services.map(s => (
+                <MobileLink key={s.slug} to={`/services/${s.slug}`} label={s.title} onClick={() => setMobileOpen(false)} />
+              ))}
+              <MobileLink to="/services" label="View All Services" onClick={() => setMobileOpen(false)} />
+            </MobileDropdown>
+
+            <MobileLink to="/solutions" label="Solutions" onClick={() => setMobileOpen(false)} />
+            
+            <MobileDropdown title="Industries">
+              {industries.map(i => (
+                <MobileLink key={i.slug} to={`/industries/${i.slug}`} label={i.title} onClick={() => setMobileOpen(false)} />
+              ))}
+              <MobileLink to="/industries" label="View All Industries" onClick={() => setMobileOpen(false)} />
+            </MobileDropdown>
+
             <MobileLink to="/case-studies" label="Projects" onClick={() => setMobileOpen(false)} />
             <MobileLink to="/about" label="About" onClick={() => setMobileOpen(false)} />
             <MobileLink to="/contact" label="Contact" onClick={() => setMobileOpen(false)} />
