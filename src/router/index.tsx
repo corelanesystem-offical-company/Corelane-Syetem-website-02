@@ -22,6 +22,13 @@ const BlogPost = lazy(() => import('@/pages/BlogPost'))
 const Contact = lazy(() => import('@/pages/Contact'))
 const ThankYou = lazy(() => import('@/pages/ThankYou'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
+const Solutions = lazy(() => import('@/pages/Solutions'))
+
+// Solution pages
+const CustomBusinessSystems = lazy(() => import('@/pages/solutions/CustomBusinessSystems'))
+const BusinessAutomationSolution = lazy(() => import('@/pages/solutions/BusinessAutomationSolution'))
+const CloudSolutions = lazy(() => import('@/pages/solutions/CloudSolutions'))
+const DataSolutions = lazy(() => import('@/pages/solutions/DataSolutions'))
 
 // Service pages
 const WebDevelopment = lazy(() => import('@/pages/services/WebDevelopment'))

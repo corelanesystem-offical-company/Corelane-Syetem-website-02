@@ -125,7 +125,7 @@ export default function LocationDetailPage({ location }: LocationDetailPageProps
               <div className="flex flex-wrap gap-3">
                 {location.industries.map((ind, i) => (
                   <Link key={i} to={`/industries/${ind.slug}`} className="group">
-                    <Badge variant="slate" className="px-4 py-2.5 text-sm hover:bg-teal hover:text-white hover:border-teal transition-colors flex items-center gap-2">
+                    <Badge variant="default" className="px-4 py-2.5 text-sm hover:bg-teal hover:text-white hover:border-teal transition-colors flex items-center gap-2">
                       {ind.title}
                     </Badge>
                   </Link>

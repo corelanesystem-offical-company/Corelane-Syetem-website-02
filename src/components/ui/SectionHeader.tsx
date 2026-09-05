@@ -25,9 +25,8 @@ export default function SectionHeader({
     <div
       id={id}
       className={cn(
-        'mb-12 md:mb-16',
-        align === 'center' && 'text-center',
-        align === 'left' && 'text-left',
+        'mb-12 md:mb-16 max-w-3xl',
+        align === 'center' ? 'mx-auto text-center' : 'text-left',
         className
       )}
     >
@@ -35,7 +34,7 @@ export default function SectionHeader({
         <p
           className={cn(
             'text-sm font-semibold uppercase tracking-widest mb-3',
-            light ? 'text-teal-light' : 'text-teal'
+            light ? 'text-brand-light' : 'text-brand'
           )}
         >
           {eyebrow}
@@ -44,7 +43,7 @@ export default function SectionHeader({
       <h2
         className={cn(
           'text-h2 font-bold text-balance',
-          light ? 'text-white' : 'text-slate-800',
+          light ? 'text-text-inverse' : 'text-text-primary',
           titleClassName
         )}
       >
@@ -53,9 +52,8 @@ export default function SectionHeader({
       {subtitle && (
         <p
           className={cn(
-            'mt-4 text-lg max-w-2xl leading-relaxed',
-            align === 'center' && 'mx-auto',
-            light ? 'text-slate-400' : 'text-slate-600'
+            'mt-4 text-body-lg leading-relaxed text-balance',
+            light ? 'text-text-muted' : 'text-text-secondary'
           )}
         >
           {subtitle}

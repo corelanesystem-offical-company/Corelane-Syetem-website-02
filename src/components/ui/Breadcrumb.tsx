@@ -22,10 +22,10 @@ export default function Breadcrumb({ items, light = false, className }: Breadcru
       <Link
         to="/"
         className={cn(
-          'flex items-center gap-1 transition-colors duration-200',
+          'flex items-center gap-1 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-sm',
           light
-            ? 'text-slate-400 hover:text-white'
-            : 'text-slate-500 hover:text-teal'
+            ? 'text-text-muted hover:text-text-inverse'
+            : 'text-text-secondary hover:text-brand'
         )}
         aria-label="Home"
       >
@@ -37,14 +37,14 @@ export default function Breadcrumb({ items, light = false, className }: Breadcru
           <span key={index} className="flex items-center gap-1.5">
             <ChevronRight
               size={14}
-              className={cn(light ? 'text-slate-500' : 'text-slate-400')}
+              className={cn(light ? 'text-surface-dark-muted' : 'text-text-muted')}
               aria-hidden
             />
             {isLast || !item.href ? (
               <span
                 className={cn(
-                  'font-medium',
-                  light ? 'text-white' : 'text-slate-800'
+                  'font-medium truncate max-w-[200px] sm:max-w-none',
+                  light ? 'text-text-inverse' : 'text-text-primary'
                 )}
                 aria-current="page"
               >
@@ -54,10 +54,10 @@ export default function Breadcrumb({ items, light = false, className }: Breadcru
               <Link
                 to={item.href}
                 className={cn(
-                  'transition-colors duration-200',
+                  'transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-sm truncate max-w-[150px] sm:max-w-none',
                   light
-                    ? 'text-slate-400 hover:text-white'
-                    : 'text-slate-500 hover:text-teal'
+                    ? 'text-text-muted hover:text-text-inverse'
+                    : 'text-text-secondary hover:text-brand'
                 )}
               >
                 {item.label}

@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
-import FloatingActions from '@/components/layout/FloatingActions'
+import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import { useScrollTop } from '@/hooks/useScrollTop'
 import { organizationSchema, websiteSchema } from '@/components/seo/SEO'
 
@@ -27,19 +27,19 @@ export default function RootLayout() {
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100]
-          focus:px-4 focus:py-2 focus:bg-teal focus:text-white focus:rounded-lg focus:font-medium"
+          focus:px-4 focus:py-2 focus:bg-brand focus:text-white focus:rounded-lg focus:font-medium shadow-elevated"
       >
         Skip to main content
       </a>
 
       <Navbar />
 
-      <main id="main-content" className="pt-16 md:pt-18 min-h-screen flex flex-col">
+      <main id="main-content" className="pt-12 md:pt-14 min-h-screen flex flex-col focus-visible:outline-none">
         <Outlet />
       </main>
 
       <Footer />
-      <FloatingActions />
+      <WhatsAppFAB />
     </>
   )
 }

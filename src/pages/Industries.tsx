@@ -50,10 +50,10 @@ export default function Industries() {
                     <span className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Relevant Solutions</span>
                     <div className="flex flex-wrap gap-2">
                       {industry.relevantServices.slice(0, 3).map((service, i) => (
-                        <Badge key={i} variant="slate">{service.title}</Badge>
+                        <Badge key={i} variant="default">{service.title}</Badge>
                       ))}
                       {industry.relevantServices.length > 3 && (
-                        <Badge variant="slate">+{industry.relevantServices.length - 3} more</Badge>
+                        <Badge variant="default">+{industry.relevantServices.length - 3} more</Badge>
                       )}
                     </div>
                   </div>

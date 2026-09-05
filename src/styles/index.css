@@ -5,51 +5,35 @@
 /* ===================================================
    CSS Custom Properties (Design Tokens)
    =================================================== */
-:root {
-  --color-navy: #0D1B2A;
-  --color-navy-800: #162236;
-  --color-teal: #3AAFB9;
-  --color-teal-dark: #2A8A92;
-  --color-white: #ffffff;
+@layer base {
+  :root {
+    --color-brand: #0F766E;
+    --color-surface: #FFFFFF;
+    --color-text: #475569;
+    --color-heading: #0F172A;
+    --color-border: #E2E8F0;
 
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  }
 
-  --container-max: 1280px;
-  --container-padding: 1.5rem;
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
 
-  --transition-base: 200ms ease;
-  --transition-medium: 300ms ease;
-}
+  body {
+    @apply bg-surface text-text-secondary font-sans antialiased;
+    overflow-x: hidden;
+  }
 
-/* ===================================================
-   Base Styles
-   =================================================== */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-text-primary tracking-tight;
+  }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  font-family: var(--font-sans);
-  color: #1E293B;
-  background-color: #ffffff;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-/* ===================================================
-   Focus Styles (Accessibility)
-   =================================================== */
-:focus-visible {
-  outline: 2px solid #3AAFB9;
-  outline-offset: 3px;
-  border-radius: 4px;
+  /* Accessible Focus Styles */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand ring-offset-2 ring-offset-surface;
+  }
 }
 
 /* ===================================================
@@ -57,56 +41,31 @@ body {
    =================================================== */
 @layer utilities {
   .container-content {
-    @apply w-full max-w-content mx-auto px-4 sm:px-6 lg:px-8;
+    @apply w-full max-w-content mx-auto px-5 sm:px-8 lg:px-10;
   }
 
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-20 md:py-28;
   }
 
   .text-balance {
     text-wrap: balance;
   }
 
-  /* Gradient text for brand accent */
-  .text-gradient {
-    background: linear-gradient(135deg, #3AAFB9, #5FC8D1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Subtle teal underline decoration */
-  .teal-underline {
-    position: relative;
-  }
-  .teal-underline::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 40px;
-    height: 3px;
-    background: #3AAFB9;
-    border-radius: 2px;
-  }
-
   /* Grid Backgrounds */
   .bg-grid-slate-pattern {
     background-image: linear-gradient(to right, #f1f5f9 1px, transparent 1px), linear-gradient(to bottom, #f1f5f9 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-size: 32px 32px;
   }
   .bg-grid-navy-pattern {
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-size: 32px 32px;
   }
 
   /* Animation Delays */
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
   .delay-300 { animation-delay: 300ms; }
-  .delay-400 { animation-delay: 400ms; }
-  .delay-500 { animation-delay: 500ms; }
 }
 
 /* ===================================================
@@ -116,12 +75,11 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  @apply bg-surface-alt;
 }
 ::-webkit-scrollbar-thumb {
-  background: #94A3B8;
-  border-radius: 3px;
+  @apply bg-border rounded-full;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748B;
+  @apply bg-text-muted;
 }

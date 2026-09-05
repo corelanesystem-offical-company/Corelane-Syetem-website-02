@@ -41,7 +41,7 @@ export default function ThankYou() {
               </Button>
             </Link>
             <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer">
-              <Button variant="whatsapp" size="lg" className="w-full sm:w-auto">
+              <Button variant="primary" size="lg" className="bg-[#25D366] hover:bg-[#1EBE55] text-white border-transparent w-full sm:w-auto">
                 <MessageCircle size={18} />
                 WhatsApp Us
               </Button>

@@ -1,37 +1,56 @@
-import SEO from '@/components/seo/SEO'
-import HeroSection from '@/components/sections/HeroSection'
-import TrustSection from '@/components/sections/TrustSection'
-import ServicesSection from '@/components/sections/ServicesSection'
-import BusinessProblemsSection from '@/components/sections/BusinessProblemsSection'
-import ProcessSection from '@/components/sections/ProcessSection'
-import CloudDevopsSection from '@/components/sections/CloudDevopsSection'
-import DataEngineeringSection from '@/components/sections/DataEngineeringSection'
-import IndustriesSection from '@/components/sections/IndustriesSection'
-import WhyCoreLaneSection from '@/components/sections/WhyCoreLaneSection'
-import TechCapabilities from '@/components/sections/TechCapabilities'
-import CTASection from '@/components/sections/CTASection'
+import { Helmet } from 'react-helmet-async'
+import HeroSection from '@/components/sections/home/HeroSection'
+import TrustSection from '@/components/sections/home/TrustSection'
+import BusinessProblemsSection from '@/components/sections/home/BusinessProblemsSection'
+import ServicesSection from '@/components/sections/home/ServicesSection'
+import SolutionsSection from '@/components/sections/home/SolutionsSection'
+import TechnicalCapabilitySection from '@/components/sections/home/TechnicalCapabilitySection'
+import IndustriesSection from '@/components/sections/home/IndustriesSection'
+import ProcessSection from '@/components/sections/home/ProcessSection'
+import WhyCorelaneSection from '@/components/sections/home/WhyCorelaneSection'
+import FinalCTASection from '@/components/sections/home/FinalCTASection'
 
 export default function Home() {
   return (
     <>
-      <SEO
-        title="Corelane Systems — Enterprise Software & Cloud Engineering"
-        description="Corelane Systems builds professional websites, web applications, custom software, and cloud infrastructure for businesses. Practical technology solutions."
-        canonical="/"
-        ogType="website"
-      />
+      <Helmet>
+        <title>Corelane Systems | Enterprise Software & Cloud Engineering</title>
+        <meta
+          name="description"
+          content="Corelane Systems builds custom software, robust cloud infrastructure, and business automation solutions that help companies operate and scale."
+        />
+        <link rel="canonical" href="https://corelanesystems.com/" />
+      </Helmet>
 
+      {/* 1. Hero */}
       <HeroSection />
+
+      {/* 2. Trust / Value Proposition */}
       <TrustSection />
-      <ServicesSection />
+
+      {/* 3. Business Problems vs Our Approach */}
       <BusinessProblemsSection />
-      <ProcessSection />
-      <CloudDevopsSection />
-      <DataEngineeringSection />
+
+      {/* 4. Core Services */}
+      <ServicesSection />
+
+      {/* 5. Solutions / What We Build */}
+      <SolutionsSection />
+
+      {/* 6. Technical Capability */}
+      <TechnicalCapabilitySection />
+
+      {/* 7. Industries */}
       <IndustriesSection />
-      <WhyCoreLaneSection />
-      <TechCapabilities />
-      <CTASection />
+
+      {/* 8. Process */}
+      <ProcessSection />
+
+      {/* 9. Why Corelane */}
+      <WhyCorelaneSection />
+
+      {/* 10. Final CTA */}
+      <FinalCTASection />
     </>
   )
 }
