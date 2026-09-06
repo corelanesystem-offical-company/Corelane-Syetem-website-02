@@ -4,7 +4,7 @@ import SEO from '@/components/seo/SEO'
 import Button from '@/components/ui/Button'
 import { CONTACT } from '@/utils/cn'
 import { Mail, MessageCircle, MapPin } from 'lucide-react'
-import { trackEvent } from '@/utils/analytics'
+import { trackEvent, setPendingLead } from '@/utils/analytics'
 
 const SERVICES = [
   'Website Development',
@@ -146,6 +146,7 @@ export default function Contact() {
           service: formData.service,
           projectType: formData.projectType 
         })
+        setPendingLead('contact_form')
         setIsSubmitting(false)
         navigate('/thank-you')
       } else {

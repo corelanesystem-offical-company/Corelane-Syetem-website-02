@@ -23,6 +23,7 @@ const Contact = lazy(() => import('@/pages/Contact'))
 const ThankYou = lazy(() => import('@/pages/ThankYou'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
 const Solutions = lazy(() => import('@/pages/Solutions'))
+const LandingPage = lazy(() => import('@/pages/LandingPage'))
 
 // Solution pages
 const CustomBusinessSystems = lazy(() => import('@/pages/solutions/CustomBusinessSystems'))
@@ -134,6 +135,9 @@ export default function AppRouter() {
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
           </Route>
+
+          {/* Paid Ads Landing Pages (No corporate navbar/footer) */}
+          <Route path="landing/:slug" element={<LandingPage />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

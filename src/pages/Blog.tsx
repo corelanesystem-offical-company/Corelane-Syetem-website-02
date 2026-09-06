@@ -1,136 +1,134 @@
-import { useState, useMemo } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
-import SEO from '@/components/seo/SEO'
-import Breadcrumb from '@/components/ui/Breadcrumb'
-import CTASection from '@/components/sections/CTASection'
-import { blogPosts } from '@/data/blogPosts'
-import { Search, Calendar, Clock, ArrowRight } from 'lucide-react'
+import { ArrowRight, BookOpen, Clock, Calendar } from 'lucide-react'
 
-const CATEGORIES = [
-  'All',
-  'Web Development',
-  'Software Development',
-  'Cloud Engineering',
-  'DevOps',
-  'Data',
-  'Automation',
-  'Business Technology'
-]
+import { Container, Section } from '@/components/ui/LayoutPrimitives'
+import SectionHeader from '@/components/ui/SectionHeader'
+import Badge from '@/components/ui/Badge'
+import CTASection from '@/components/sections/CTASection'
+import Button from '@/components/ui/Button'
+import { blogPosts } from '@/data/blogPosts'
 
 export default function Blog() {
-  const [searchQuery, setSearchQuery] = useState('')
-  const [activeCategory, setActiveCategory] = useState('All')
-
-  const filteredPosts = useMemo(() => {
-    return blogPosts.filter((post) => {
-      const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                            post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
-      const matchesCategory = activeCategory === 'All' || post.category === activeCategory
-      return matchesSearch && matchesCategory
-    }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-  }, [searchQuery, activeCategory])
+  const featuredPost = blogPosts[0]
+  const latestPosts = blogPosts.slice(1)
 
   return (
     <>
-      <SEO
-        title="Blog & Insights | Corelane Systems"
-        description="Practical insights about software development, cloud engineering, DevOps, data, automation and digital transformation."
-        canonical="/blog"
-      />
+      <Helmet>
+        <title>Engineering Insights & Blog | Corelane Systems</title>
+        <meta name="description" content="Engineering insights, architecture decisions, and business technology strategies for building better digital systems." />
+        <link rel="canonical" href="https://corelanesystem.com/blog" />
+      </Helmet>
 
-      <section className="bg-navy pt-8 pb-16 md:pt-12 md:pb-24">
-        <div className="container-content">
-          <Breadcrumb items={[{ label: 'Blog' }]} light className="mb-8" />
-          <h1 className="text-h1 font-bold text-white text-balance mb-6">
-            Insights for Modern Businesses
+      {/* Hero */}
+      <Section variant="dark" className="pt-24 pb-16 md:pt-32 md:pb-24 border-b border-border-dark bg-surface-dark relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:32px_32px]" />
+        
+        <Container className="relative z-10 max-w-4xl">
+          <div className="flex items-center gap-2 text-sm text-text-muted mb-8">
+            <Link to="/" className="hover:text-brand-accent transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-text-inverse font-medium">Insights</span>
+          </div>
+
+          <Badge variant="dark" className="mb-6 tracking-widest uppercase bg-brand-light/10 text-brand-accent border-brand/30">
+            Technology Blog
+          </Badge>
+          <h1 className="text-display font-bold text-text-inverse mb-6 text-balance">
+            Engineering insights for building better digital systems.
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl leading-relaxed mb-10">
-            Practical insights about software development, cloud engineering, DevOps, data, automation and digital transformation.
+          <p className="text-xl text-text-muted mb-10 leading-relaxed max-w-3xl">
+            Thoughts, technical perspectives, and operational strategies on software engineering, cloud architecture, DevOps, and data.
           </p>
+        </Container>
+      </Section>
 
-          <div className="flex flex-col md:flex-row gap-4 max-w-4xl">
-            <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-              <input
-                type="text"
-                placeholder="Search articles..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-navy-800 text-white border border-navy-700 rounded-lg pl-12 pr-4 py-3 focus:outline-none focus:border-teal transition-colors placeholder:text-slate-500"
-              />
+      {/* Featured Post */}
+      <Section variant="default" className="border-b border-border">
+        <Container>
+          <SectionHeader align="left" title="Featured Insight" className="mb-8" />
+          
+          <Link 
+            to={`/blog/${featuredPost.slug}`}
+            className="group block bg-surface border border-border hover:border-brand rounded-2xl p-8 lg:p-12 shadow-sm transition-all overflow-hidden relative"
+          >
+            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
+              <BookOpen size={120} />
             </div>
-            <div className="overflow-x-auto pb-2 md:pb-0 hide-scrollbar flex items-center">
-              <div className="flex gap-2">
-                {CATEGORIES.map(category => (
-                  <button
-                    key={category}
-                    onClick={() => setActiveCategory(category)}
-                    className={`whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      activeCategory === category 
-                        ? 'bg-teal text-white' 
-                        : 'bg-navy-800 text-slate-300 hover:bg-navy-700'
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
+            
+            <div className="relative z-10 max-w-3xl">
+              <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
+                <Badge variant="default" className="text-brand border-brand/20 bg-brand/5">
+                  {featuredPost.category}
+                </Badge>
+                <div className="flex items-center gap-1.5 text-text-muted font-medium">
+                  <Calendar size={14} />
+                  <span>{new Date(featuredPost.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-text-muted font-medium">
+                  <Clock size={14} />
+                  <span>{featuredPost.readingTime}</span>
+                </div>
+              </div>
+
+              <h2 className="text-3xl lg:text-4xl font-bold text-text-primary mb-6 group-hover:text-brand transition-colors text-balance">
+                {featuredPost.title}
+              </h2>
+              
+              <p className="text-lg text-text-secondary leading-relaxed mb-8">
+                {featuredPost.excerpt}
+              </p>
+              
+              <div className="flex items-center gap-2 text-brand font-bold">
+                Read Article
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
+          </Link>
+        </Container>
+      </Section>
+
+      {/* Latest Posts */}
+      <Section variant="alt" className="border-b border-border">
+        <Container>
+          <SectionHeader align="left" title="Latest Articles" className="mb-8" />
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {latestPosts.map((post) => (
+              <Link 
+                key={post.slug}
+                to={`/blog/${post.slug}`}
+                className="group flex flex-col bg-surface border border-border hover:border-brand rounded-xl p-8 shadow-sm transition-all h-full"
+              >
+                <div className="flex flex-wrap items-center gap-3 mb-4 text-xs">
+                  <span className="font-bold text-brand uppercase tracking-wider">{post.category}</span>
+                  <span className="text-border-dark">•</span>
+                  <span className="text-text-muted font-medium">{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                </div>
+                
+                <h3 className="text-2xl font-bold text-text-primary mb-4 group-hover:text-brand transition-colors">
+                  {post.title}
+                </h3>
+                
+                <p className="text-text-secondary leading-relaxed mb-8 flex-1">
+                  {post.excerpt}
+                </p>
+                
+                <div className="flex items-center gap-2 text-sm font-bold text-text-primary group-hover:text-brand transition-colors mt-auto">
+                  Read More
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="section-padding bg-slate-50 min-h-[50vh]">
-        <div className="container-content">
-          {filteredPosts.length === 0 ? (
-            <div className="text-center py-20">
-              <h3 className="text-xl font-bold text-slate-800 mb-2">No articles found</h3>
-              <p className="text-slate-600">Try adjusting your search or category filter.</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPosts.map((post) => (
-                <article key={post.slug} className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
-                  <div className="p-6 md:p-8 flex-1 flex flex-col">
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="bg-teal-50 text-teal-dark px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
-                        {post.category}
-                      </span>
-                    </div>
-                    <Link to={`/blog/${post.slug}`} className="block mb-4">
-                      <h2 className="text-xl font-bold text-slate-800 hover:text-teal transition-colors">
-                        {post.title}
-                      </h2>
-                    </Link>
-                    <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between mt-auto pt-6 border-t border-slate-100">
-                      <div className="flex items-center gap-4 text-xs text-slate-500 font-medium">
-                        <span className="flex items-center gap-1.5">
-                          <Calendar size={14} />
-                          {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                        </span>
-                        <span className="flex items-center gap-1.5">
-                          <Clock size={14} />
-                          {post.readingTime}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-slate-50 px-6 py-4 border-t border-slate-100">
-                    <Link to={`/blog/${post.slug}`} className="text-teal font-semibold text-sm flex items-center gap-2 hover:gap-3 transition-all">
-                      Read Article <ArrowRight size={16} />
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      <CTASection />
+      <CTASection 
+        title="Need engineering expertise?"
+        subtitle="Let's discuss how our capabilities align with your business requirements."
+      />
     </>
   )
 }

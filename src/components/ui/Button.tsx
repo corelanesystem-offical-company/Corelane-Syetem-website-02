@@ -19,12 +19,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const disabledStyles = 'disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100'
 
     const variants = {
-      primary: 'bg-brand text-white hover:bg-brand-hover shadow-sm border border-transparent',
-      secondary: 'bg-surface text-text-primary border border-border hover:border-brand hover:text-brand shadow-sm',
-      outline: 'bg-transparent text-brand border-2 border-brand hover:bg-brand hover:text-white',
-      ghost: 'bg-transparent text-text-secondary hover:text-brand hover:bg-surface-alt',
-      dark: 'bg-surface-dark text-white hover:bg-surface-dark-muted shadow-sm border border-transparent',
-      danger: 'bg-status-error text-white hover:bg-red-700 shadow-sm border border-transparent',
+      primary: 'bg-brand text-white hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/25 hover:-translate-y-0.5 shadow-sm border border-transparent',
+      secondary: 'bg-surface text-text-primary border border-border hover:border-brand hover:text-brand hover:shadow-md hover:-translate-y-0.5 shadow-sm',
+      outline: 'bg-transparent text-brand border-2 border-brand hover:bg-brand hover:text-white hover:shadow-md hover:-translate-y-0.5',
+      ghost: 'bg-transparent text-text-secondary hover:text-brand hover:bg-brand/5',
+      dark: 'bg-surface-dark text-white hover:bg-surface-dark-muted hover:shadow-lg hover:shadow-slate-900/20 hover:-translate-y-0.5 shadow-sm border border-transparent',
+      danger: 'bg-status-error text-white hover:bg-red-700 hover:shadow-lg hover:shadow-red-500/20 hover:-translate-y-0.5 shadow-sm border border-transparent',
     }
 
     const sizes = {

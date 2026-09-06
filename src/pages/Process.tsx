@@ -70,7 +70,7 @@ export default function Process() {
       <Helmet>
         <title>Engineering Process | Corelane Systems</title>
         <meta name="description" content="Discover how Corelane Systems takes a business requirement and turns it into a reliable, working software solution through structured engineering." />
-        <link rel="canonical" href="https://corelanesystems.com/process" />
+        <link rel="canonical" href="https://corelanesystem.com/process" />
       </Helmet>
 
       {/* 1. Hero */}

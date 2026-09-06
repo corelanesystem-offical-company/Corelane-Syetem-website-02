@@ -203,18 +203,18 @@ export default function Navbar() {
       )}
     >
       <div className="container-content">
-        <div className="flex items-center justify-between h-20 md:h-24">
+        <div className="flex items-center justify-between h-20 md:h-28">
           
           {/* LEFT: Logo */}
           <Link 
             to="/" 
-            className="flex items-center flex-shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md p-1 -ml-1" 
+            className="flex items-center flex-shrink-0 group outline-none" 
             aria-label="Corelane Systems home"
           >
             <img
               src="/logo.png"
               alt="Corelane Systems"
-              className="h-16 md:h-20 w-auto transform group-hover:scale-105 transition-transform object-contain"
+              className="h-20 md:h-24 w-auto transform group-hover:scale-105 transition-transform object-contain"
             />
           </Link>
 

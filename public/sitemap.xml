@@ -161,52 +161,27 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://corelanesystem.com/blog/how-much-does-a-business-website-cost</loc>
+    <loc>https://corelanesystem.com/blog/what-a-cicd-pipeline-actually-does</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://corelanesystem.com/blog/website-vs-web-application</loc>
+    <loc>https://corelanesystem.com/blog/how-to-plan-custom-business-software</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://corelanesystem.com/blog/when-does-a-business-need-custom-software</loc>
+    <loc>https://corelanesystem.com/blog/monolithic-vs-modular-architecture</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://corelanesystem.com/blog/how-cloud-engineering-helps-growing-businesses</loc>
+    <loc>https://corelanesystem.com/blog/api-integration-vs-manual-data-transfer</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://corelanesystem.com/blog/what-is-devops-for-businesses</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://corelanesystem.com/blog/how-business-automation-reduces-manual-work</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://corelanesystem.com/blog/how-to-choose-a-software-development-company</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://corelanesystem.com/blog/website-features-every-business-needs</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://corelanesystem.com/blog/how-to-build-a-scalable-web-application</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://corelanesystem.com/blog/cloud-migration-for-small-and-medium-businesses</loc>
+    <loc>https://corelanesystem.com/blog/what-an-etl-pipeline-does</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

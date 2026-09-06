@@ -1,13 +1,20 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useSearchParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import { useEffect } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import { useScrollTop } from '@/hooks/useScrollTop'
 import { organizationSchema, websiteSchema } from '@/components/seo/SEO'
+import { captureUTMs } from '@/utils/analytics'
 
 export default function RootLayout() {
   useScrollTop()
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    captureUTMs(searchParams)
+  }, [searchParams])
 
   return (
     <>

@@ -7,8 +7,11 @@ import { trackEvent } from '@/utils/analytics'
 
 export default function FinalCTASection() {
   return (
-    <Section variant="dark" className="bg-surface-dark border-t border-border-dark py-24 md:py-32">
-      <Container size="narrow">
+    <Section variant="dark" className="bg-surface-dark border-t border-border-dark py-24 md:py-32 relative overflow-hidden">
+      {/* Dark mode subtle glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand/20 rounded-full blur-[120px] pointer-events-none" />
+      
+      <Container size="narrow" className="relative z-10">
         <div className="text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-text-inverse mb-6 text-balance">
             Have a software or technology challenge?

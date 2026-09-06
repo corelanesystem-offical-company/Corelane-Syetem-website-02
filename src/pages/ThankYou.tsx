@@ -1,10 +1,26 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 import SEO from '@/components/seo/SEO'
 import Button from '@/components/ui/Button'
 import { ArrowRight, MessageCircle } from 'lucide-react'
 import { CONTACT } from '@/utils/cn'
+import { trackEvent } from '@/utils/analytics'
 
 export default function ThankYou() {
+  useEffect(() => {
+    trackEvent('thank_you_view')
+
+    // Check for pending lead to avoid duplicate conversion fires on reload
+    if (sessionStorage.getItem('pending_lead') === 'true') {
+      const source = sessionStorage.getItem('pending_lead_source') || 'unknown'
+      trackEvent('lead_generated', { source })
+      
+      // Clear flag to prevent duplicate events
+      sessionStorage.removeItem('pending_lead')
+      sessionStorage.removeItem('pending_lead_source')
+    }
+  }, [])
+
   return (
     <>
       <SEO 

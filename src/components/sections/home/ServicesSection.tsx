@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { Container, Section } from '@/components/ui/LayoutPrimitives'
 import SectionHeader from '@/components/ui/SectionHeader'
 import { Card } from '@/components/ui/Card'
+import ScrollReveal from '@/components/ui/ScrollReveal'
 import { services } from '@/data/services'
 import { trackEvent } from '@/utils/analytics'
 import { cn } from '@/utils/cn'
@@ -11,23 +12,25 @@ export default function ServicesSection() {
   return (
     <Section variant="alt">
       <Container>
-        <SectionHeader
-          eyebrow="Capabilities"
-          title="What We Build"
-          subtitle="Comprehensive engineering services covering the entire software lifecycle, from initial architecture to cloud deployment."
-        />
+        <ScrollReveal>
+          <SectionHeader
+            eyebrow="Capabilities"
+            title="What We Build"
+            subtitle="Comprehensive engineering services covering the entire software lifecycle, from initial architecture to cloud deployment."
+          />
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
             const isTechnical = ['cloud-engineering', 'devops', 'data-engineering'].includes(service.slug)
             
             return (
-              <Link 
-                key={service.slug} 
-                to={`/services/${service.slug}`}
-                onClick={() => trackEvent('service_cta_click', { service: service.slug, source: 'home' })}
-                className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-xl"
-              >
+              <ScrollReveal key={service.slug} delay={index * 100} className="h-full">
+                <Link 
+                  to={`/services/${service.slug}`}
+                  onClick={() => trackEvent('service_cta_click', { service: service.slug, source: 'home' })}
+                  className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-xl block h-full"
+                >
                 <Card 
                   className={cn(
                     'h-full p-6 flex flex-col border transition-all duration-300 group-hover:-translate-y-1',
@@ -65,7 +68,7 @@ export default function ServicesSection() {
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                   </div>
                 </Card>
-              </Link>
+              </Link></ScrollReveal>
             )
           })}
         </div>
