@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]): string {
 }
 
 /** The production domain — update when domain is confirmed */
-export const SITE_URL = 'https://corelanesystem.com'
+export const SITE_URL = 'https://www.corelanesystems.com'
 
 /** Contact details — update with real values before launch */
 export const CONTACT = {

@@ -1,7 +1,7 @@
 # SEO Technical Audit & Fixes Report
 
 ## Overview
-This document outlines the root causes and applied fixes for the SEO technical issues identified on the Corelane Systems production domain (`https://corelanesystem.com/`). All changes respect the existing React/Vite SPA architecture without introducing backend dependencies or server-side rendering frameworks.
+This document outlines the root causes and applied fixes for the SEO technical issues identified on the Corelane Systems production domain (`https://www.corelanesystems.com/`). All changes respect the existing React/Vite SPA architecture without introducing backend dependencies or server-side rendering frameworks.
 
 ---
 
@@ -17,8 +17,8 @@ This document outlines the root causes and applied fixes for the SEO technical i
 **Issue**: Duplicate domains (`www` vs `non-www`) and potential temporary Netlify subdomains.
 **Root Cause**: Lack of strict canonical domain enforcement.
 **Fixes Applied**:
-- Enforced `https://corelanesystem.com/` as the primary production domain.
-- Added a `301` redirect from `https://www.corelanesystem.com/*` to `https://corelanesystem.com/:splat` in both `public/_redirects` and `netlify.toml` (must appear before the SPA fallback rule).
+- Enforced `https://www.corelanesystems.com/` as the primary production domain.
+- Added a `301` redirect from `https://www.corelanesystems.com/*` to `https://www.corelanesystems.com/:splat` in both `public/_redirects` and `netlify.toml` (must appear before the SPA fallback rule).
 
 ## 3. Homepage & Technical SEO Enhancements
 **Issue**: Missing canonical tags, unstructured headings, missing default JSON-LD.

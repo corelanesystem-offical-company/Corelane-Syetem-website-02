@@ -64,7 +64,7 @@ export default function BlogPost() {
       <Helmet>
         <title>{post.metaTitle}</title>
         <meta name="description" content={post.metaDescription} />
-        <link rel="canonical" href={`https://corelanesystem.com/blog/${post.slug}`} />
+        <link rel="canonical" href={`https://www.corelanesystems.com/blog/${post.slug}`} />
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>

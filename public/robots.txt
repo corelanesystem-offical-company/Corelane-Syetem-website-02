@@ -6,4 +6,4 @@ Disallow: /404
 Disallow: /thank-you
 
 # Sitemap
-Sitemap: https://corelanesystem.com/sitemap.xml
+Sitemap: https://www.corelanesystems.com/sitemap.xml

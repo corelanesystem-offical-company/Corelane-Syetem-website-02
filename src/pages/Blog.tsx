@@ -18,7 +18,7 @@ export default function Blog() {
       <Helmet>
         <title>Engineering Insights & Blog | Corelane Systems</title>
         <meta name="description" content="Engineering insights, architecture decisions, and business technology strategies for building better digital systems." />
-        <link rel="canonical" href="https://corelanesystem.com/blog" />
+        <link rel="canonical" href="https://www.corelanesystems.com/blog" />
       </Helmet>
 
       {/* Hero */}

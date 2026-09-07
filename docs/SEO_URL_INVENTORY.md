@@ -24,4 +24,4 @@ This document tracks all active public routes on the Corelane Systems website to
 - All static routes have explicit canonical paths defined in their top-level component.
 - All dynamic routes derive their canonical paths and titles automatically based on their slug.
 - The `404` and `thank-you` pages explicitly declare `<meta name="robots" content="noindex, nofollow" />`.
-- All paths are relative inside the `SEO` component and automatically resolve to the full `https://corelanesystem.com/` domain.
+- All paths are relative inside the `SEO` component and automatically resolve to the full `https://www.corelanesystems.com/` domain.

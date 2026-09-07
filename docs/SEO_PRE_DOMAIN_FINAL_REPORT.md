@@ -40,7 +40,7 @@ The following mechanics have been rigorously audited and confirmed structurally 
 - `www` to non-`www` redirects configured in `netlify.toml` and `_redirects`.
 
 **PRODUCTION DOMAIN NOT YET VERIFIED**
-The following mechanics operate at the network/infrastructure level and CANNOT be definitively verified until the final domain (`https://corelanesystem.com/`) is purchased, connected, and fully propagated via Netlify:
+The following mechanics operate at the network/infrastructure level and CANNOT be definitively verified until the final domain (`https://www.corelanesystems.com/`) is purchased, connected, and fully propagated via Netlify:
 - The actual server execution of the `www` to non-`www` 301 redirects.
 - Automatic HTTP to HTTPS certificate provisioning and redirection.
 - Google Search Console crawling and indexing verification.

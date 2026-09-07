@@ -21,9 +21,9 @@ export default function LocationDetailPage({ location }: LocationDetailPageProps
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://corelanesystem.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://corelanesystem.com/locations' },
-      { '@type': 'ListItem', position: 3, name: location.country, item: `https://corelanesystem.com/locations/${location.slug}` }
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.corelanesystems.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://www.corelanesystems.com/locations' },
+      { '@type': 'ListItem', position: 3, name: location.country, item: `https://www.corelanesystems.com/locations/${location.slug}` }
     ]
   }
 
@@ -32,7 +32,7 @@ export default function LocationDetailPage({ location }: LocationDetailPageProps
       <Helmet>
         <title>{location.metaTitle}</title>
         <meta name="description" content={location.metaDescription} />
-        <link rel="canonical" href={`https://corelanesystem.com/locations/${location.slug}`} />
+        <link rel="canonical" href={`https://www.corelanesystems.com/locations/${location.slug}`} />
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 

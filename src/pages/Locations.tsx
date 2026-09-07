@@ -16,7 +16,7 @@ export default function Locations() {
       <Helmet>
         <title>International Engineering Services | Corelane Systems</title>
         <meta name="description" content="Corelane Systems provides software engineering, cloud, and data solutions for businesses in Pakistan, the US, UK, Canada, and the UAE." />
-        <link rel="canonical" href="https://corelanesystem.com/locations" />
+        <link rel="canonical" href="https://www.corelanesystems.com/locations" />
       </Helmet>
 
       {/* Hero */}

@@ -1,7 +1,7 @@
 # Netlify redirects
 
-# www → non-www (canonical domain enforcement)
-https://www.corelanesystem.com/* https://corelanesystem.com/:splat 301!
+# non-www to www (canonical domain enforcement)
+https://corelanesystems.com/* https://www.corelanesystems.com/:splat 301!
 
-# SPA fallback — must be LAST so explicit redirects above take priority
+# SPA fallback - must be LAST
 /*    /index.html   200

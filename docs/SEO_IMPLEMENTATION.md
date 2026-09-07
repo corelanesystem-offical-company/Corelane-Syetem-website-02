@@ -11,10 +11,10 @@ This ensures consistent and deduplicated rendering of:
 - JSON-LD Structured Data
 
 ## 2. Canonical Strategy
-The permanent canonical domain is set to `https://corelanesystem.com/` in `src/utils/cn.ts` (`SITE_URL`).
+The permanent canonical domain is set to `https://www.corelanesystems.com/` in `src/utils/cn.ts` (`SITE_URL`).
 The `<SEO />` component constructs canonical URLs dynamically:
-- Homepage: `canonical="/"` resolves to `https://corelanesystem.com/`
-- Subpages: `canonical="/about"` resolves to `https://corelanesystem.com/about`
+- Homepage: `canonical="/"` resolves to `https://www.corelanesystems.com/`
+- Subpages: `canonical="/about"` resolves to `https://www.corelanesystems.com/about`
 - Dynamic pages (e.g., Services): `canonical={"/services/" + slug}` resolves to the specific service page.
 
 ## 3. Metadata & JSON-LD
@@ -38,4 +38,4 @@ Corelane maintains distinct hub pages for regions (Pakistan, UAE, UK, USA, Canad
 These are independent crawlable URLs (`/locations/[country]`) rather than dynamically localized content or forced IP-redirects. Each location has unique H1 tags, localized context, and `areaServed` JSON-LD to naturally rank for regional queries.
 
 ## 7. Future Custom-Domain Migration
-Because `SITE_URL` is configured centrally as `https://corelanesystem.com` and hardcoded in the `sitemap.xml` and base `index.html` schemas, connecting the final domain to Netlify will require **no code changes**. The site is inherently ready for the production domain.
+Because `SITE_URL` is configured centrally as `https://www.corelanesystems.com` and hardcoded in the `sitemap.xml` and base `index.html` schemas, connecting the final domain to Netlify will require **no code changes**. The site is inherently ready for the production domain.
