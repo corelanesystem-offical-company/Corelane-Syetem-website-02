@@ -1,31 +1,54 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { Container, Section } from '@/components/ui/LayoutPrimitives'
 import SectionHeader from '@/components/ui/SectionHeader'
 import { Card } from '@/components/ui/Card'
-import ScrollReveal from '@/components/ui/ScrollReveal'
+import Reveal from '@/components/animations/Reveal'
 import { services } from '@/data/services'
 import { trackEvent } from '@/utils/analytics'
 import { cn } from '@/utils/cn'
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } }
+}
 
 export default function ServicesSection() {
   return (
     <Section variant="alt">
       <Container>
-        <ScrollReveal>
+        <Reveal>
           <SectionHeader
             eyebrow="Capabilities"
             title="What We Build"
             subtitle="Comprehensive engineering services covering the entire software lifecycle, from initial architecture to cloud deployment."
           />
-        </ScrollReveal>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => {
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+        >
+          {services.map((service) => {
             const isTechnical = ['cloud-engineering', 'devops', 'data-engineering'].includes(service.slug)
             
             return (
-              <ScrollReveal key={service.slug} delay={index * 100} className="h-full">
+              <motion.div key={service.slug} variants={itemVariants} className="h-full">
                 <Link 
                   to={`/services/${service.slug}`}
                   onClick={() => trackEvent('service_cta_click', { service: service.slug, source: 'home' })}
@@ -68,10 +91,11 @@ export default function ServicesSection() {
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                   </div>
                 </Card>
-              </Link></ScrollReveal>
+              </Link>
+              </motion.div>
             )
           })}
-        </div>
+        </motion.div>
       </Container>
     </Section>
   )

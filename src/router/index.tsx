@@ -48,6 +48,7 @@ const DevOps = lazy(() => import('@/pages/services/DevOps'))
 const DataEngineering = lazy(() => import('@/pages/services/DataEngineering'))
 const DataAnalytics = lazy(() => import('@/pages/services/DataAnalytics'))
 const BusinessAutomation = lazy(() => import('@/pages/services/BusinessAutomation'))
+const SocialMediaManagement = lazy(() => import('@/pages/services/SocialMediaManagement'))
 
 // Industry pages
 const RealEstate = lazy(() => import('@/pages/industries/RealEstate'))
@@ -102,6 +103,7 @@ export default function AppRouter() {
             <Route path="services/data-engineering" element={<DataEngineering />} />
             <Route path="services/data-analytics" element={<DataAnalytics />} />
             <Route path="services/business-automation" element={<BusinessAutomation />} />
+            <Route path="services/social-media-management" element={<SocialMediaManagement />} />
 
             {/* Solutions */}
             <Route path="solutions" element={<Solutions />} />

@@ -7,6 +7,7 @@ import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import { useScrollTop } from '@/hooks/useScrollTop'
 import { organizationSchema, websiteSchema } from '@/components/seo/SEO'
 import { captureUTMs } from '@/utils/analytics'
+import SmoothScrollProvider from '@/providers/SmoothScrollProvider'
 
 export default function RootLayout() {
   useScrollTop()
@@ -17,7 +18,7 @@ export default function RootLayout() {
   }, [searchParams])
 
   return (
-    <>
+    <SmoothScrollProvider>
       {/* Global JSON-LD (rendered on every page) */}
       <Helmet>
         <script
@@ -47,6 +48,7 @@ export default function RootLayout() {
 
       <Footer />
       <WhatsAppFAB />
-    </>
+    </SmoothScrollProvider>
   )
 }
+

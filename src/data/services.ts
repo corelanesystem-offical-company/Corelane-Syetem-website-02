@@ -47,6 +47,62 @@ const standardProcess = [
 
 export const services: Service[] = [
   {
+    slug: 'social-media-management',
+    title: 'Social Media Management',
+    shortTitle: 'Social Media',
+    h1: 'Build a Social Presence That Works Like a Business System',
+    tagline: 'Strategic content, publishing, engagement, and analytics designed to build your brand presence.',
+    description: 'Technology-driven social media management for businesses that want a consistent, professional, and measurable digital presence.',
+    longDescription: 'Technology-driven social media management for businesses that want a consistent, professional, and measurable digital presence. From strategy and content to publishing, engagement, and analytics, Corelane helps businesses build a consistent and measurable social media presence.',
+    businessProblem: 'Businesses struggle to turn attention into business opportunities.',
+    solution: 'A structured, measurable, and consistent social media system with AI-assisted workflows.',
+    icon: BarChart3,
+    color: 'text-indigo-500',
+    problems: [
+      { title: 'Inconsistent posting', description: 'No clear content strategy leads to random posting schedules and poor engagement.' },
+      { title: 'Time consuming', description: 'Content creation takes too much time away from core business operations.' },
+      { title: 'No structured calendar', description: 'Social channels operate independently without a unified timeline or strategy.' },
+      { title: 'Unmeasurable results', description: 'Difficult to track performance and turn social attention into tangible business value.' },
+    ],
+    whatWeProvide: [
+      'Social Media Strategy',
+      'Content Creation',
+      'Content Calendar',
+      'Scheduling & Publishing',
+      'Community Management',
+      'Social Media Analytics',
+      'Performance Optimization',
+      'Social Listening',
+    ],
+    features: [
+      'Audience research',
+      'Brand positioning',
+      'Platform strategy',
+      'Content pillars',
+      'Publishing strategy',
+    ],
+    whoItsFor: ['Startups', 'SMEs', 'E-commerce businesses', 'Professional services', 'Real estate businesses', 'Technology companies', 'Healthcare businesses', 'Law firms'],
+    process: [
+      { title: 'Strategy', desc: 'Audience research, brand positioning, and platform strategy.' },
+      { title: 'Create', desc: 'Educational, promotional, and thought leadership content creation.' },
+      { title: 'Schedule', desc: 'Monthly planning, organization, and platform-specific publishing.' },
+      { title: 'Engage', desc: 'Comment monitoring, message management, and audience interaction.' },
+      { title: 'Analyze', desc: 'Performance tracking, social listening, and ongoing optimization.' }
+    ],
+    techStack: ['LinkedIn', 'Instagram', 'Facebook', 'X', 'YouTube', 'TikTok'],
+    relatedServices: [
+      { slug: 'data-analytics', title: 'Data Analytics' },
+      { slug: 'ui-ux-design', title: 'UI/UX Design' }
+    ],
+    faq: [
+      { q: 'Which platforms do you manage?', a: 'We manage LinkedIn, Instagram, Facebook, X, YouTube, and TikTok, depending on your audience strategy.' },
+      { q: 'Do you use AI for content?', a: 'We use AI-assisted workflows for research, ideation, and optimization, always with human oversight and strategic approval.' },
+      { q: 'How do you measure success?', a: 'We track reach, engagement, follower growth, website clicks, and campaign performance using advanced analytics.' }
+    ],
+    metaTitle: 'Social Media Management Services | Corelane Systems',
+    metaDescription: 'Strategic content, publishing, engagement, and analytics designed to build your brand presence. Turn social activity into measurable business value with AI-assisted workflows.',
+  },
+  {
     slug: 'web-development',
     title: 'Website Development',
     shortTitle: 'Websites',
@@ -511,3 +567,4 @@ export const services: Service[] = [
 export function getServiceBySlug(slug: string): Service | undefined {
   return services.find((s) => s.slug === slug)
 }
+
